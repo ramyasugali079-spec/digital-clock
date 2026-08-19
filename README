@@ -1,0 +1,62 @@
+# Digital Clock using Verilog
+
+## Description
+This project implements a digital clock using Verilog HDL.
+
+The clock displays:
+    HOURS : MINUTES : SECONDS
+
+The clock operates in 24-hour format.
+
+Example:
+    12:59:59
+    13:00:00
+
+## Inputs
+- clk   : System clock
+- reset : Active-high reset
+
+## Outputs
+- hours   : 5-bit hour counter (0-23)
+- minutes : 6-bit minute counter (0-59)
+- seconds : 6-bit second counter (0-59)
+
+## Operation
+The digital clock counts seconds as follows:
+
+00:00:00
+00:00:01
+00:00:02
+...
+00:00:59
+00:01:00
+...
+23:59:59
+00:00:00
+
+## Files
+
+- digital_clock.v
+    Main digital clock RTL design.
+
+- tb_digital_clock.v
+    Testbench for simulation.
+
+- README.md
+    Project documentation.
+
+## Reset
+When reset is HIGH, the clock is initialized to:
+
+00:00:00
+
+## Simulation
+Compile using Icarus Verilog:
+
+iverilog -o digital_clock_tb digital_clock.v tb_digital_clock.v
+
+Run:
+
+vvp digital_clock_tb
+
+A VCD waveform file named digital_clock.vcd is also generated.
